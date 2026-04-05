@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五年級數學：立體形體</title>
+<style>
+  body, html { margin: 0; padding: 0; height: 100%; font-family: 'Microsoft JhengHei', sans-serif; background-color: #2c3e50; color: white; overflow: hidden; }
+  #slides-container { width: 100vw; height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; }
+  .slide { width: 80%; height: 80%; background-color: #34495e; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; opacity: 0; transition: opacity 0.5s ease-in-out; position: absolute; }
+  .slide.active { display: flex; opacity: 1; }
+  h1 { color: #f1c40f; font-size: 3em; margin-bottom: 0.5em; }
+  h2 { color: #e74c3c; font-size: 2.5em; border-bottom: 2px solid #e74c3c; padding-bottom: 10px; }
+  p, li { font-size: 1.8em; line-height: 1.6; text-align: left; margin: 10px 0; }
+  ul { width: 80%; margin: 0 auto; }
+  .highlight { color: #2ecc71; font-weight: bold; }
+  .controls { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: center; gap: 20px; z-index: 10; }
+  button { padding: 15px 30px; font-size: 1.2em; border: none; border-radius: 10px; background-color: #3498db; color: white; cursor: pointer; transition: background-color 0.3s; }
+  button:hover { background-color: #2980b9; }
+</style>
+</head>
+<body>
+
+<div id="slides-container">
+  <div class="slide active">
+    <h1>第五單元：立體形體</h1>
+    <p>準備好進入 3D 的幾何世界了嗎？</p>
+    <p style="font-size: 1.2em; color: #bdc3c7;">(請使用鍵盤左右鍵或下方按鈕切換)</p>
+  </div>
+
+  <div class="slide">
+    <h2>學習目標</h2>
+    <ul>
+      <li>理解長方體面與面的<span class="highlight">垂直</span>與<span class="highlight">平行</span>。</li>
+      <li>認識柱體與錐體的<span class="highlight">底面</span>和<span class="highlight">側面</span>。</li>
+      <li>探索立體形體的<span class="highlight">展開圖</span>與數量密碼。</li>
+      <li>發掘<span class="highlight">球體</span>的神奇秘密！</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h2>相鄰與相對</h2>
+    <ul>
+      <li>長方體中，有邊相連的面叫作相鄰的面，它們互相<span class="highlight">垂直</span>。</li>
+      <li>沒有相連、面對面的面叫作相對的面，它們距離處處相等，互相<span class="highlight">平行</span>。</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h2>柱體 vs 錐體</h2>
+    <ul>
+      <li><strong>角柱：</strong>上下有 <span class="highlight">2個</span> 全等的多邊形底面，側面都是長方形。</li>
+      <li><strong>角錐：</strong>只有 <span class="highlight">1個</span> 多邊形底面，頂端尖尖的，側面都是三角形。</li>
+      <li style="color: #e67e22;">💡迷思破解：角錐的側面和底面「沒有」互相垂直喔！</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h2>神奇的球體</h2>
+    <ul>
+      <li>不管從哪個方向切開，球的剖面一定都是<span class="highlight">圓形</span>。</li>
+      <li>通過「球心」切開的面，是最大的圓！</li>
+      <li>最大的圓的直徑，就是這顆球的<span class="highlight">直徑</span>。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="controls">
+  <button onclick="changeSlide(-1)">上一頁</button>
+  <button onclick="changeSlide(1)">下一頁</button>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function changeSlide(direction) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide += direction;
+    if (currentSlide < 0) currentSlide = 0;
+    if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+    slides[currentSlide].classList.add('active');
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') changeSlide(1);
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+  });
+</script>
+</body>
+</html>
